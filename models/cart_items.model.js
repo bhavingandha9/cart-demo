@@ -1,18 +1,16 @@
 
 const { DataTypes } = require('sequelize')
 const { sequelize, Sequelize } = require('./../helpers/sequelize')
-const Cart = require('./cart.model')
-
 class CartItems extends Sequelize.Model { }
 
 CartItems.init({
   id: { type: DataTypes.INTEGER(11), allowNull: false, autoIncrement: true, primaryKey: true },
   iCartId: {
     type: DataTypes.INTEGER(11),
-    references: {
-      model: Cart,
-      key: 'id'
-    },
+    // references: {
+    //   model: Cart,
+    //   key: 'id'
+    // },
     allowNull: false
   },
   sProductName: { type: DataTypes.STRING(45), allowNull: false },
@@ -33,7 +31,6 @@ CartItems.init({
     }
   ]
 })
-// CartItems.belongsTo(Cart)
 CartItems.sync()
 
 module.exports = CartItems

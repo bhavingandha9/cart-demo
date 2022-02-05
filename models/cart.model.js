@@ -25,5 +25,7 @@ Cart.init({
 })
 
 Cart.hasMany(CartItem, { foreignKey: 'iCartId' })
+CartItem.belongsTo(Cart, { foreignKey: 'iCartId' })
+
 Cart.sync()
 module.exports = Cart
